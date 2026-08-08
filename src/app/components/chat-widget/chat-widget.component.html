@@ -1,0 +1,27 @@
+<div class="chat-widget">
+  <div class="chat-options" [class.open]="isOpen">
+    <div class="chat-header">
+      <h4>Chat With Us</h4>
+      <p>Choose how you'd like to connect</p>
+    </div>
+    <button class="chat-option whatsapp" (click)="openWhatsApp()">
+      <i class="fab fa-whatsapp"></i>
+      <div>
+        <strong>WhatsApp</strong>
+        <span>Chat instantly</span>
+      </div>
+    </button>
+    <button class="chat-option email" (click)="openEmail()">
+      <i class="fas fa-envelope"></i>
+      <div>
+        <strong>Email</strong>
+        <span>Send us a message</span>
+      </div>
+    </button>
+  </div>
+
+  <button class="chat-toggle" (click)="toggleChat()" [class.active]="isOpen" aria-label="Chat with us">
+    <i class="fas fa-comments" *ngIf="!isOpen"></i>
+    <i class="fas fa-times" *ngIf="isOpen"></i>
+  </button>
+</div>

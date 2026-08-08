@@ -1,0 +1,42 @@
+<section class="page-hero">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1>Our Services</h1>
+    <p>Comprehensive design, build, and management solutions</p>
+  </div>
+</section>
+
+<section class="services-intro">
+  <div class="container">
+    <div class="intro-text">
+      <h2>What We Offer</h2>
+      <p>At Forge By Myneni, we translate ideas into exceptional concepts, guided by a deep understanding of spatial flow, materiality, and style. These visions are brought to life by our team, whose flawless execution ensures every detail meets the highest standards of excellence.</p>
+    </div>
+  </div>
+</section>
+
+<section class="services-list">
+  <div class="container">
+    <div class="service-detail" *ngFor="let service of services; let i = index" [class.reverse]="i % 2 !== 0">
+      <div class="service-content">
+        <div class="service-icon"><i [class]="service.icon"></i></div>
+        <h3>{{ service.title }}</h3>
+        <p>{{ service.fullDescription }}</p>
+        <a routerLink="/contact" class="btn-outline">Get a Quote</a>
+      </div>
+      <div class="service-visual">
+        <div class="visual-placeholder">
+          <i [class]="service.icon"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="container">
+    <h2>Ready to transform your space?</h2>
+    <p>Let's discuss your project and bring your vision to life.</p>
+    <a routerLink="/contact" class="btn-primary">Start Your Project</a>
+  </div>
+</section>

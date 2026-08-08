@@ -1,0 +1,71 @@
+<section class="page-hero">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1>Our Projects</h1>
+    <p>Explore our portfolio of completed works</p>
+  </div>
+</section>
+
+<section class="projects-section">
+  <div class="container">
+    <div class="filter-bar">
+      <button
+        *ngFor="let cat of categories"
+        [class.active]="cat === activeCategory"
+        (click)="filterBy(cat)"
+      >
+        {{ cat }}
+      </button>
+    </div>
+
+    <div class="projects-grid">
+      <div class="project-card" *ngFor="let project of filteredProjects" (click)="openProject(project)">
+        <div class="project-image">
+          <img [src]="project.coverImage" [alt]="project.title" />
+          <div class="project-overlay">
+            <span class="view-btn">View Project</span>
+          </div>
+        </div>
+        <div class="project-info">
+          <span class="project-category">{{ project.category }}</span>
+          <h3>{{ project.title }}</h3>
+          <p>{{ project.location }} &bull; {{ project.year }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="empty-state" *ngIf="filteredProjects.length === 0">
+      <i class="fas fa-folder-open"></i>
+      <p>No projects in this category yet.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Project Modal -->
+<div class="project-modal" *ngIf="selectedProject" (click)="closeProject()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <button class="modal-close" (click)="closeProject()" aria-label="Close">&times;</button>
+    <div class="modal-header">
+      <h2>{{ selectedProject.title }}</h2>
+      <div class="modal-meta">
+        <span><i class="fas fa-map-marker-alt"></i> {{ selectedProject.location }}</span>
+        <span><i class="fas fa-calendar"></i> {{ selectedProject.year }}</span>
+        <span><i class="fas fa-tag"></i> {{ selectedProject.category }}</span>
+      </div>
+    </div>
+    <p class="modal-description">{{ selectedProject.description }}</p>
+    <div class="modal-gallery">
+      <img
+        *ngFor="let img of selectedProject.images"
+        [src]="img"
+        [alt]="selectedProject.title"
+        (click)="openLightbox(img)"
+      />
+    </div>
+  </div>
+</div>
+
+<!-- Lightbox -->
+<div class="lightbox" *ngIf="lightboxImage" (click)="closeLightbox()">
+  <img [src]="lightboxImage" alt="Project image" />
+</div>

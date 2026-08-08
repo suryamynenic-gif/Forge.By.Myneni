@@ -1,0 +1,109 @@
+<section class="hero">
+  <div class="hero-slides">
+    <div
+      class="hero-slide"
+      *ngFor="let slide of heroSlides; let i = index"
+      [class.active]="i === currentSlide"
+      [style.backgroundImage]="'url(' + slide.image + ')'"
+    >
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <span class="hero-label">FORGE BY MYNENI</span>
+        <h1>{{ slide.title }}</h1>
+        <p>{{ slide.subtitle }}</p>
+        <a [routerLink]="slide.link" class="btn-hero">
+          {{ slide.cta }} <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="hero-dots">
+    <button
+      *ngFor="let slide of heroSlides; let i = index"
+      [class.active]="i === currentSlide"
+      (click)="goToSlide(i)"
+      [attr.aria-label]="'Go to slide ' + (i + 1)"
+    ></button>
+  </div>
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<section class="intro-section">
+  <div class="container">
+    <div class="intro-grid">
+      <div class="intro-text" data-aos="fade-right">
+        <span class="section-label">ABOUT US</span>
+        <h2>{{ about.headline }}</h2>
+        <p>At Forge By Myneni, we believe great interiors should be beautiful, functional, and feel completely your own. From designing the perfect layout to adding those finishing touches, we handle every step so you can enjoy a smooth, stress-free experience.</p>
+        <a routerLink="/about" class="btn-outline">Know More <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="intro-image" data-aos="fade-left" data-aos-delay="200">
+        <img src="assets/pages/home-about.jpg" alt="Forge By Myneni Interior Design" />
+        <div class="image-accent"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="features-section">
+  <div class="container">
+    <div class="features-grid">
+      <div class="feature-card" *ngFor="let feature of about.features; let i = index" [attr.data-aos]="'fade-up'" [attr.data-aos-delay]="i * 150">
+        <div class="feature-number">0{{ i + 1 }}</div>
+        <h3>{{ feature.title }}</h3>
+        <p>{{ feature.description }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="statement-section">
+  <div class="statement-bg" style="background-image: url('assets/pages/home-statement.jpg')"></div>
+  <div class="statement-overlay"></div>
+  <div class="container" data-aos="fade-up">
+    <h2>From concept to completion — we deliver fully finished spaces, ready to move in.</h2>
+    <p>Whether it's a cozy home, a stylish café, or a sleek office, we create spaces you'll love to live and work in — every detail, every angle, fully covered.</p>
+  </div>
+</section>
+
+<section class="services-section">
+  <div class="container">
+    <div class="section-header" data-aos="fade-up">
+      <span class="section-label">WHAT WE DO</span>
+      <h2>Comprehensive design, build, and management solutions</h2>
+      <p>crafted to bring your vision to life seamlessly.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card" *ngFor="let service of services; let i = index" [attr.data-aos]="'fade-up'" [attr.data-aos-delay]="i * 100">
+        <div class="service-icon">
+          <i [class]="service.icon"></i>
+        </div>
+        <h3>{{ service.title }}</h3>
+        <p>{{ service.shortDescription }}</p>
+        <a routerLink="/services" class="service-link">VIEW MORE <i class="fas fa-long-arrow-alt-right"></i></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="stats-section">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item" *ngFor="let stat of siteConfig.stats; let i = index" [attr.data-aos]="'zoom-in'" [attr.data-aos-delay]="i * 100">
+        <span class="stat-value">{{ stat.value }}</span>
+        <span class="stat-label">{{ stat.label }}</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="container" data-aos="fade-up">
+    <span class="section-label">LET'S WORK TOGETHER</span>
+    <h2>Your ideas, our expertise. Let's start building the future together.</h2>
+    <a routerLink="/contact" class="btn-primary">Contact Us <i class="fas fa-arrow-right"></i></a>
+  </div>
+</section>

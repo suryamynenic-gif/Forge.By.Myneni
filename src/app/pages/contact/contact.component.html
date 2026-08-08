@@ -1,0 +1,104 @@
+<section class="page-hero">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1>Contact Us</h1>
+    <p>Your vision starts with a conversation. Reach out now.</p>
+  </div>
+</section>
+
+<section class="contact-section">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h2>Get In Touch</h2>
+        <p class="info-text">Ready to transform your space? We'd love to hear from you. Reach out through any of the channels below or fill in the form.</p>
+
+        <div class="info-items">
+          <div class="info-item">
+            <div class="info-icon"><i class="fas fa-phone"></i></div>
+            <div>
+              <h4>Call Us</h4>
+              <a [href]="'tel:' + config.contact.phone">{{ config.contact.phoneDisplay }}</a>
+            </div>
+          </div>
+
+          <div class="info-item" *ngIf="config.contact.email">
+            <div class="info-icon"><i class="fas fa-envelope"></i></div>
+            <div>
+              <h4>Mail Us</h4>
+              <a [href]="'mailto:' + config.contact.email">{{ config.contact.email }}</a>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
+            <div>
+              <h4>Locate Us</h4>
+              <span>{{ config.contact.city }}, {{ config.contact.country }}</span>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-icon"><i class="fab fa-whatsapp"></i></div>
+            <div>
+              <h4>WhatsApp</h4>
+              <a (click)="openWhatsApp()" class="whatsapp-link">Chat with us instantly</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-form-wrapper">
+        <form (ngSubmit)="onSubmit()" #contactForm="ngForm">
+          <div class="form-group">
+            <label for="name">Full Name *</label>
+            <input type="text" id="name" name="name" [(ngModel)]="formData.name" required placeholder="Your name" />
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="email">Email *</label>
+              <input type="email" id="email" name="email" [(ngModel)]="formData.email" required placeholder="your@email.com" />
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone</label>
+              <input type="tel" id="phone" name="phone" [(ngModel)]="formData.phone" placeholder="+91 XXXXX XXXXX" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="service">Service Interested In</label>
+            <select id="service" name="service" [(ngModel)]="formData.service">
+              <option value="">Select a service</option>
+              <option value="Interior Design">Interior Design & Space Planning</option>
+              <option value="Residential Interiors">Residential & Commercial Interiors</option>
+              <option value="Turnkey Fit-out">Turnkey Fit-out Works</option>
+              <option value="Custom Joinery">Custom Joinery & Furniture</option>
+              <option value="Modular Kitchen">Modular Kitchen Design</option>
+              <option value="Landscaping">Landscaping & Outdoor Design</option>
+              <option value="Decor & Styling">Decor & Styling</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Message *</label>
+            <textarea id="message" name="message" [(ngModel)]="formData.message" required rows="5" placeholder="Tell us about your project..."></textarea>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn-primary" [disabled]="!contactForm.valid">Send Message</button>
+            <button type="button" class="btn-whatsapp" (click)="openWhatsApp()">
+              <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+            </button>
+          </div>
+        </form>
+
+        <div class="success-message" *ngIf="submitted">
+          <i class="fas fa-check-circle"></i>
+          <p>Thank you! Your email client should open with the message ready to send.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

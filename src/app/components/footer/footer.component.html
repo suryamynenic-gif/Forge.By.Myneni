@@ -1,0 +1,56 @@
+<footer class="footer">
+  <div class="footer-top">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="assets/logo.jpeg" alt="Forge By Myneni" class="footer-logo" />
+          <p>{{ config.description || 'From concept to completion — we deliver fully finished spaces, ready to move in.' }}</p>
+          <div class="social-links" *ngIf="config.socialMedia">
+            <a *ngIf="config.socialMedia.facebook" [href]="config.socialMedia.facebook" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a *ngIf="config.socialMedia.instagram" [href]="config.socialMedia.instagram" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a *ngIf="config.socialMedia.twitter" [href]="config.socialMedia.twitter" target="_blank" rel="noopener" aria-label="X"><i class="fab fa-x-twitter"></i></a>
+            <a *ngIf="config.socialMedia.linkedin" [href]="config.socialMedia.linkedin" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a *ngIf="config.socialMedia.youtube" [href]="config.socialMedia.youtube" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-nav">
+          <h4>Quick Links</h4>
+          <ul>
+            <li *ngFor="let item of config.navigation">
+              <a [routerLink]="item.route">{{ item.label }}</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="footer-contact">
+          <h4>Contact Us</h4>
+          <ul>
+            <li *ngIf="config.contact.phone">
+              <i class="fas fa-phone"></i>
+              <a [href]="'tel:' + config.contact.phone">{{ config.contact.phoneDisplay }}</a>
+            </li>
+            <li *ngIf="config.contact.email">
+              <i class="fas fa-envelope"></i>
+              <a [href]="'mailto:' + config.contact.email">{{ config.contact.email }}</a>
+            </li>
+            <li *ngIf="config.contact.address">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>{{ config.contact.address }}, {{ config.contact.city }}, {{ config.contact.country }}</span>
+            </li>
+            <li *ngIf="!config.contact.address">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>{{ config.contact.city }}, {{ config.contact.country }}</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="container">
+      <p>&copy; {{ currentYear }} {{ config.companyName }}. All rights reserved.</p>
+    </div>
+  </div>
+</footer>

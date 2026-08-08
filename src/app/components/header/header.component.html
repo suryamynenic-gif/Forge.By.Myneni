@@ -1,0 +1,51 @@
+<header class="header" [class.scrolled]="isScrolled">
+  <!-- Top Info Bar -->
+  <div class="top-bar" [class.hidden]="isScrolled">
+    <div class="container">
+      <div class="top-bar-content">
+        <div class="top-left">
+          <a *ngIf="config.socialMedia.facebook" [href]="config.socialMedia.facebook" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a *ngIf="config.socialMedia.instagram" [href]="config.socialMedia.instagram" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a *ngIf="config.socialMedia.linkedin" [href]="config.socialMedia.linkedin" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+        <div class="top-right">
+          <span class="top-info" *ngIf="config.contact.email">
+            <i class="fas fa-envelope"></i> {{ config.contact.email }}
+          </span>
+          <span class="top-info" *ngIf="config.contact.address">
+            <i class="fas fa-map-marker-alt"></i> {{ config.contact.address }}
+          </span>
+          <span class="top-info">
+            <i class="fas fa-phone"></i> {{ config.contact.phoneDisplay }}
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Nav -->
+  <nav class="navbar" [class.compact]="isScrolled">
+    <div class="container">
+      <a routerLink="/" class="logo" (click)="closeMenu()">
+        <img src="assets/profile_photo.jpeg" alt="Forge By Myneni" class="logo-img" />
+      </a>
+
+      <button class="menu-toggle" (click)="toggleMenu()" [class.active]="isMenuOpen" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <ul class="nav-links" [class.open]="isMenuOpen">
+        <li *ngFor="let item of config.navigation">
+          <a [routerLink]="item.route" routerLinkActive="active" [routerLinkActiveOptions]="{exact: item.route === '/'}" (click)="closeMenu()">
+            {{ item.label }}
+          </a>
+        </li>
+        <li class="nav-cta">
+          <a routerLink="/contact" class="btn-cta" (click)="closeMenu()">Get In Touch</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>
