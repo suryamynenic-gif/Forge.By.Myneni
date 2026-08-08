@@ -182,8 +182,18 @@
 }
 
 @media (max-width: 768px) {
-  .page-hero .hero-content h1 {
-    font-size: 2.2rem;
+  .page-hero {
+    height: 40vh;
+    min-height: 280px;
+    padding-top: 70px;
+
+    .hero-content h1 {
+      font-size: 2rem;
+    }
+  }
+
+  .services-intro {
+    padding: 50px 0;
   }
 
   .service-detail {

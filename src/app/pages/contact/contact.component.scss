@@ -228,8 +228,18 @@
 }
 
 @media (max-width: 768px) {
-  .page-hero .hero-content h1 {
-    font-size: 2.2rem;
+  .page-hero {
+    height: 40vh;
+    min-height: 280px;
+    padding-top: 70px;
+
+    .hero-content h1 {
+      font-size: 2rem;
+    }
+  }
+
+  .contact-section {
+    padding: 60px 0;
   }
 
   .contact-grid {
@@ -243,5 +253,15 @@
 
   .contact-form-wrapper {
     padding: 24px;
+  }
+
+  .form-actions {
+    flex-direction: column;
+
+    .btn-primary,
+    .btn-whatsapp {
+      width: 100%;
+      justify-content: center;
+    }
   }
 }
