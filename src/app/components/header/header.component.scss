@@ -93,6 +93,8 @@
 .logo {
   display: flex;
   align-items: center;
+  gap: 10px;
+  text-decoration: none;
 
   .logo-img {
     height: 80px;
@@ -100,10 +102,23 @@
     object-fit: contain;
     transition: height 0.3s ease;
   }
+
+  .logo-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--dark);
+    letter-spacing: 0.5px;
+    transition: font-size 0.3s ease;
+  }
 }
 
 .compact .logo-img {
   height: 60px;
+}
+
+.compact .logo-text {
+  font-size: 1.1rem;
 }
 
 .nav-links {
