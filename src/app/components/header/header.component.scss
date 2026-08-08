@@ -110,32 +110,16 @@
   }
 
   .logo-text {
-    display: flex;
-    flex-direction: column;
-    line-height: 1.2;
-    transition: all 0.3s ease;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-weight: 700;
 
-    .brand-name {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.4rem;
-      font-weight: 700;
-
-      .dark {
-        color: var(--dark);
-      }
-
-      .gold {
-        color: var(--gold);
-      }
+    .dark {
+      color: var(--dark);
     }
 
-    .tagline {
-      font-size: 0.6rem;
-      font-weight: 500;
-      letter-spacing: 2px;
-      text-transform: uppercase;
+    .gold {
       color: var(--gold);
-      margin-top: 2px;
     }
   }
 }
@@ -144,12 +128,8 @@
   height: 60px;
 }
 
-.compact .logo-text .brand-name {
+.compact .logo-text {
   font-size: 1.15rem;
-}
-
-.compact .logo-text .tagline {
-  font-size: 0.5rem;
 }
 
 .nav-links {
