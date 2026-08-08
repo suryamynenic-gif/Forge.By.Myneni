@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SITE_CONFIG } from '../../config/site.config';
 
@@ -12,6 +12,15 @@ import { SITE_CONFIG } from '../../config/site.config';
 export class ChatWidgetComponent {
   config = SITE_CONFIG;
   isOpen = false;
+
+  constructor(private el: ElementRef) {}
+
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: MouseEvent) {
+    if (this.isOpen && !this.el.nativeElement.contains(event.target)) {
+      this.isOpen = false;
+    }
+  }
 
   toggleChat() {
     this.isOpen = !this.isOpen;
