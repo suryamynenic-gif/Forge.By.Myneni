@@ -25,8 +25,6 @@ export const PROJECTS_CONFIG: ProjectItem[] = [
     coverImage: 'assets/projects/project-1/cover.jpg',
     images: [
       'assets/projects/project-1/1.jpg',
-      'assets/projects/project-1/2.jpg',
-      'assets/projects/project-1/3.jpg',
     ],
   },
   {
@@ -39,8 +37,6 @@ export const PROJECTS_CONFIG: ProjectItem[] = [
     coverImage: 'assets/projects/project-2/cover.jpg',
     images: [
       'assets/projects/project-2/1.jpg',
-      'assets/projects/project-2/2.jpg',
-      'assets/projects/project-2/3.jpg',
     ],
   },
   {
@@ -53,8 +49,6 @@ export const PROJECTS_CONFIG: ProjectItem[] = [
     coverImage: 'assets/projects/project-3/cover.jpg',
     images: [
       'assets/projects/project-3/1.jpg',
-      'assets/projects/project-3/2.jpg',
-      'assets/projects/project-3/3.jpg',
     ],
   },
 ];
