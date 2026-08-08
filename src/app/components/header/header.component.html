@@ -9,15 +9,15 @@
           <a *ngIf="config.socialMedia.linkedin" [href]="config.socialMedia.linkedin" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
         </div>
         <div class="top-right">
-          <span class="top-info" *ngIf="config.contact.email">
+          <a class="top-info" *ngIf="config.contact.email" [href]="'mailto:' + config.contact.email">
             <i class="fas fa-envelope"></i> {{ config.contact.email }}
-          </span>
+          </a>
           <span class="top-info" *ngIf="config.contact.address">
             <i class="fas fa-map-marker-alt"></i> {{ config.contact.address }}
           </span>
-          <span class="top-info">
+          <a class="top-info" [href]="'tel:' + config.contact.phone">
             <i class="fas fa-phone"></i> {{ config.contact.phoneDisplay }}
-          </span>
+          </a>
         </div>
       </div>
     </div>
