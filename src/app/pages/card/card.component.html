@@ -1,0 +1,61 @@
+<div class="card-page">
+  <!-- Digital Card -->
+  <div class="digital-card">
+    <div class="card-front">
+      <div class="card-logo">
+        <img src="assets/navbar-logo-trim.png" alt="Forge By Myneni" />
+      </div>
+      <h1 class="card-company"><span class="dark">Forge By </span><span class="gold">Myneni</span></h1>
+      <p class="card-tagline">{{ config.tagline }}</p>
+      <div class="card-divider"></div>
+      <h2 class="card-name">{{ config.contact.name }}</h2>
+      <p class="card-role">Founder &amp; Principal Designer</p>
+
+      <div class="card-details">
+        <a [href]="'tel:' + config.contact.phone" class="card-detail">
+          <i class="fas fa-phone"></i>
+          <span>{{ config.contact.phoneDisplay }}</span>
+        </a>
+        <a [href]="'mailto:' + config.contact.email" class="card-detail">
+          <i class="fas fa-envelope"></i>
+          <span>{{ config.contact.email }}</span>
+        </a>
+        <a [href]="'https://wa.me/' + config.contact.whatsappNumber" target="_blank" rel="noopener" class="card-detail">
+          <i class="fab fa-whatsapp"></i>
+          <span>WhatsApp</span>
+        </a>
+        <div class="card-detail">
+          <i class="fas fa-map-marker-alt"></i>
+          <span>{{ config.contact.city }}, {{ config.contact.country }}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-actions no-print">
+      <button class="btn-save" (click)="saveContact()">
+        <i class="fas fa-user-plus"></i> Save Contact
+      </button>
+      <button class="btn-print" (click)="printCard()">
+        <i class="fas fa-print"></i> Print Card
+      </button>
+    </div>
+  </div>
+
+  <!-- Printable Card (visible only during print) -->
+  <div class="print-cards">
+    <div class="print-card print-front">
+      <img src="assets/navbar-logo-trim.png" alt="Logo" class="print-logo" />
+      <div class="print-company">Forge By Myneni</div>
+      <div class="print-tagline">{{ config.tagline }}</div>
+    </div>
+    <div class="print-card print-back">
+      <div class="print-name">{{ config.contact.name }}</div>
+      <div class="print-role">Founder &amp; Principal Designer</div>
+      <div class="print-info">
+        <span><i class="fas fa-phone"></i> {{ config.contact.phoneDisplay }}</span>
+        <span><i class="fas fa-envelope"></i> {{ config.contact.email }}</span>
+        <span><i class="fas fa-map-marker-alt"></i> {{ config.contact.city }}, {{ config.contact.country }}</span>
+      </div>
+    </div>
+  </div>
+</div>
