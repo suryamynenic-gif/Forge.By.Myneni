@@ -7,7 +7,7 @@ export const SITE_CONFIG = {
     name: 'Surya Teja Myneni',
     phone: '+918520017606',
     phoneDisplay: '+91 85200 17606',
-    email: '', // To be updated
+    email: 'forgebymyneni@gmail.com',
     address: '', // To be updated
     city: 'Hyderabad',
     country: 'India',
