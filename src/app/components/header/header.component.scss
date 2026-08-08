@@ -173,33 +173,43 @@
 .menu-toggle {
   display: none;
   flex-direction: column;
-  gap: 6px;
+  gap: 5px;
   background: none;
   border: none;
   cursor: pointer;
-  padding: 8px;
-  z-index: 1001;
+  padding: 10px;
+  z-index: 1003;
 
   span {
     display: block;
-    width: 26px;
-    height: 2px;
-    background: var(--dark);
+    width: 24px;
+    height: 2.5px;
+    background: #333;
     transition: all 0.3s ease;
     border-radius: 2px;
   }
 
   &.active {
     span:nth-child(1) {
-      transform: rotate(45deg) translate(6px, 6px);
+      transform: rotate(45deg) translate(5px, 5px);
     }
     span:nth-child(2) {
       opacity: 0;
     }
     span:nth-child(3) {
-      transform: rotate(-45deg) translate(6px, -6px);
+      transform: rotate(-45deg) translate(5px, -5px);
     }
   }
+}
+
+// Mobile menu overlay (dark backdrop)
+.mobile-menu-overlay {
+  display: none;
+}
+
+// Mobile slide-in menu panel
+.mobile-menu {
+  display: none;
 }
 
 @media (max-width: 991px) {
@@ -207,57 +217,146 @@
     display: none;
   }
 
-  .menu-toggle {
-    display: flex;
-    position: relative;
-    z-index: 1002;
+  .desktop-nav {
+    display: none !important;
   }
 
-  .nav-links {
+  .menu-toggle {
+    display: flex;
+  }
+
+  .mobile-menu-overlay {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1001;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+
+    &.open {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+
+  .mobile-menu {
+    display: flex;
+    flex-direction: column;
     position: fixed;
     top: 0;
-    left: 0;
     right: 0;
     bottom: 0;
-    background: #ffffff;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 40px;
-    gap: 8px;
+    width: 300px;
+    max-width: 85vw;
+    background: #fff;
+    z-index: 1002;
     transform: translateX(100%);
-    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    z-index: 1001;
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: -4px 0 20px rgba(0, 0, 0, 0.1);
 
     &.open {
       transform: translateX(0);
     }
+  }
 
-    li a {
-      font-size: 1.3rem;
-      padding: 14px 20px;
-      color: #1a1a1a;
-      display: block;
-      text-align: center;
+  .mobile-menu-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 24px;
+    border-bottom: 1px solid #f0f0f0;
 
-      &::after {
-        display: none;
+    .mobile-logo {
+      height: 44px;
+      width: auto;
+    }
+
+    .mobile-close {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: none;
+      background: #f5f5f5;
+      color: #333;
+      font-size: 1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s ease;
+
+      &:hover {
+        background: #eee;
       }
+    }
+  }
+
+  .mobile-nav {
+    flex: 1;
+    padding: 16px 0;
+    overflow-y: auto;
+
+    a {
+      display: block;
+      padding: 16px 28px;
+      color: #333;
+      font-size: 1.05rem;
+      font-weight: 500;
+      text-decoration: none;
+      border-left: 3px solid transparent;
+      transition: all 0.2s ease;
 
       &:hover,
       &.active {
         color: #c8a45e;
+        background: #faf8f5;
+        border-left-color: #c8a45e;
+      }
+    }
+  }
+
+  .mobile-menu-footer {
+    padding: 20px 24px;
+    border-top: 1px solid #f0f0f0;
+
+    .mobile-cta {
+      display: block;
+      text-align: center;
+      padding: 14px 24px;
+      background: #c8a45e;
+      color: #fff;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      margin-bottom: 16px;
+      transition: background 0.3s ease;
+
+      &:hover {
+        background: #a8873d;
       }
     }
 
-    .nav-cta {
-      margin-top: 20px;
+    .mobile-contact {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
 
-      .btn-cta {
-        display: block;
-        text-align: center;
-        font-size: 1rem;
-        padding: 16px 32px;
+      a {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: #666;
+        font-size: 0.85rem;
+        text-decoration: none;
+
+        i {
+          color: #c8a45e;
+          width: 16px;
+          text-align: center;
+        }
       }
     }
   }

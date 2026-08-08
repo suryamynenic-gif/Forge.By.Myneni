@@ -30,13 +30,8 @@
         <img src="assets/profile_photo.jpeg" alt="Forge By Myneni" class="logo-img" />
       </a>
 
-      <button class="menu-toggle" (click)="toggleMenu()" [class.active]="isMenuOpen" aria-label="Toggle menu">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-
-      <ul class="nav-links" [class.open]="isMenuOpen">
+      <!-- Desktop nav -->
+      <ul class="nav-links desktop-nav">
         <li *ngFor="let item of config.navigation">
           <a [routerLink]="item.route" routerLinkActive="active" [routerLinkActiveOptions]="{exact: item.route === '/'}" (click)="closeMenu()">
             {{ item.label }}
@@ -46,6 +41,40 @@
           <a routerLink="/contact" class="btn-cta" (click)="closeMenu()">Get In Touch</a>
         </li>
       </ul>
+
+      <!-- Mobile hamburger -->
+      <button class="menu-toggle" (click)="toggleMenu()" [class.active]="isMenuOpen" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </div>
   </nav>
+
+  <!-- Mobile menu overlay -->
+  <div class="mobile-menu-overlay" [class.open]="isMenuOpen" (click)="closeMenu()"></div>
+  <div class="mobile-menu" [class.open]="isMenuOpen">
+    <div class="mobile-menu-header">
+      <img src="assets/profile_photo.jpeg" alt="Forge By Myneni" class="mobile-logo" />
+      <button class="mobile-close" (click)="closeMenu()" aria-label="Close menu">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    <nav class="mobile-nav">
+      <a *ngFor="let item of config.navigation"
+         [routerLink]="item.route"
+         routerLinkActive="active"
+         [routerLinkActiveOptions]="{exact: item.route === '/'}"
+         (click)="closeMenu()">
+        {{ item.label }}
+      </a>
+    </nav>
+    <div class="mobile-menu-footer">
+      <a routerLink="/contact" class="mobile-cta" (click)="closeMenu()">Get In Touch</a>
+      <div class="mobile-contact">
+        <a [href]="'tel:' + config.contact.phone"><i class="fas fa-phone"></i> {{ config.contact.phoneDisplay }}</a>
+        <a *ngIf="config.contact.email" [href]="'mailto:' + config.contact.email"><i class="fas fa-envelope"></i> {{ config.contact.email }}</a>
+      </div>
+    </div>
+  </div>
 </header>
