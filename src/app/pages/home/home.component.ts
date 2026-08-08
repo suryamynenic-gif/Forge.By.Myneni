@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { SITE_CONFIG } from '../../config/site.config';
 import { SERVICES_CONFIG } from '../../config/services.config';
 import { ABOUT_CONFIG } from '../../config/about.config';
+import { TESTIMONIALS_CONFIG, PROCESS_CONFIG } from '../../config/testimonials.config';
 
 @Component({
   selector: 'app-home',
@@ -16,6 +17,8 @@ export class HomeComponent {
   siteConfig = SITE_CONFIG;
   services = SERVICES_CONFIG.slice(0, 6);
   about = ABOUT_CONFIG;
+  testimonials = TESTIMONIALS_CONFIG;
+  process = PROCESS_CONFIG;
 
   heroSlides = [
     {

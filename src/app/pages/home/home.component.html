@@ -60,6 +60,24 @@
   </div>
 </section>
 
+<!-- How We Work -->
+<section class="process-section">
+  <div class="container">
+    <div class="section-header" data-aos="fade-up">
+      <span class="section-label">HOW WE WORK</span>
+      <h2>From Vision to Reality in 4 Simple Steps</h2>
+    </div>
+    <div class="process-grid">
+      <div class="process-card" *ngFor="let step of process; let i = index" [attr.data-aos]="'fade-up'" [attr.data-aos-delay]="i * 150">
+        <div class="process-step">{{ step.step }}</div>
+        <div class="process-icon"><i [class]="step.icon"></i></div>
+        <h3>{{ step.title }}</h3>
+        <p>{{ step.description }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="statement-section">
   <div class="statement-bg" style="background-image: url('assets/pages/home-statement.jpg')"></div>
   <div class="statement-overlay"></div>
@@ -84,6 +102,28 @@
         <h3>{{ service.title }}</h3>
         <p>{{ service.shortDescription }}</p>
         <a routerLink="/services" class="service-link">VIEW MORE <i class="fas fa-long-arrow-alt-right"></i></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section class="testimonials-section">
+  <div class="container">
+    <div class="section-header" data-aos="fade-up">
+      <span class="section-label">TESTIMONIALS</span>
+      <h2>What Our Clients Say</h2>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card" *ngFor="let t of testimonials; let i = index" [attr.data-aos]="'fade-up'" [attr.data-aos-delay]="i * 150">
+        <div class="testimonial-stars">
+          <i class="fas fa-star" *ngFor="let star of [].constructor(t.rating)"></i>
+        </div>
+        <p class="testimonial-text">"{{ t.text }}"</p>
+        <div class="testimonial-author">
+          <strong>{{ t.name }}</strong>
+          <span>{{ t.location }}</span>
+        </div>
       </div>
     </div>
   </div>
