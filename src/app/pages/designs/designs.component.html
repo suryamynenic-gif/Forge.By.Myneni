@@ -1,0 +1,37 @@
+<section class="page-hero">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1>Our Designs</h1>
+    <p>Explore our portfolio of handcrafted interiors</p>
+  </div>
+</section>
+
+<section class="designs-section">
+  <div class="container">
+    <div class="filter-bar">
+      @for (cat of categories; track cat) {
+        <button [class.active]="activeCategory === cat" (click)="filterBy(cat)">
+          {{ cat }}
+        </button>
+      }
+    </div>
+
+    <div class="masonry-grid">
+      @for (photo of filteredPhotos; track photo.src) {
+        <div class="masonry-item" (click)="openLightbox(photo)">
+          <img [src]="photo.src" [alt]="photo.alt" [title]="photo.alt" loading="lazy" />
+          <div class="overlay">
+            <span class="category-tag">{{ photo.category }}</span>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+@if (lightboxImage) {
+  <div class="lightbox" (click)="closeLightbox()">
+    <button class="lightbox-close" (click)="closeLightbox()">&times;</button>
+    <img [src]="lightboxImage" [alt]="lightboxAlt" [title]="lightboxAlt" (click)="$event.stopPropagation()" />
+  </div>
+}

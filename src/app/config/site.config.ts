@@ -34,6 +34,6 @@ export const SITE_CONFIG = {
     { label: 'About Us', route: '/about' },
     { label: 'Services', route: '/services' },
     { label: 'Projects', route: '/projects' },
-    { label: 'Contact Us', route: '/contact' },
+    { label: 'Designs', route: '/designs' },
   ],
 };
