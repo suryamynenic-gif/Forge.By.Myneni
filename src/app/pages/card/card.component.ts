@@ -14,14 +14,7 @@ export class CardComponent {
 
   get vcfData(): string {
     const c = this.config.contact;
-    return `BEGIN:VCARD
-VERSION:3.0
-FN:${c.name}
-ORG:${this.config.companyName}
-TEL:${c.phone}
-EMAIL:${c.email}
-ADR:;;${c.city};${c.country}
-END:VCARD`;
+    return `BEGIN:VCARD\nVERSION:3.0\nFN:${c.name}\nORG:${this.config.companyName}\nTEL:${c.phone}\nEMAIL:${c.email}\nADR:;;Hyderabad;Telangana;;India\nEND:VCARD`;
   }
 
   saveContact() {
@@ -36,5 +29,15 @@ END:VCARD`;
 
   printCard() {
     window.print();
+  }
+
+  shareCard() {
+    const url = window.location.href;
+    if (navigator.share) {
+      navigator.share({ title: 'Forge By Myneni', text: 'Interior Design & Execution', url });
+    } else {
+      navigator.clipboard.writeText(url);
+      alert('Link copied to clipboard!');
+    }
   }
 }

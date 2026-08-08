@@ -1,224 +1,329 @@
 .card-page {
   min-height: 100vh;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 40px 20px;
+  padding: 120px 20px 60px;
   background: var(--bg-light);
 }
 
-.digital-card {
-  max-width: 420px;
+.card-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  max-width: 700px;
   width: 100%;
 }
 
-.card-front {
-  background: #fff;
-  border-radius: 20px;
-  padding: 50px 40px;
-  text-align: center;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+// Shared card shape (landscape rectangle ~3.5:2 ratio)
+.biz-card {
+  width: 100%;
+  aspect-ratio: 1.75 / 1;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+  position: relative;
+}
 
-  .card-logo img {
-    height: 90px;
-    margin-bottom: 16px;
+// === FRONT ===
+.front {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: #f9f6f1;
+
+  .card-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+
+    .card-logo {
+      height: 60px;
+      margin-bottom: 12px;
+    }
+
+    .card-brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 10px;
+
+      span {
+        color: var(--gold);
+      }
+    }
+
+    .card-ornament {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 10px;
+
+      .line {
+        width: 30px;
+        height: 1.5px;
+        background: var(--gold);
+      }
+
+      .diamond {
+        color: var(--gold);
+        font-size: 0.6rem;
+      }
+    }
+
+    .card-tagline {
+      font-size: 0.7rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold-dark);
+    }
   }
 
-  .card-company {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.6rem;
-    font-weight: 700;
-    margin-bottom: 4px;
+  .card-right {
+    position: relative;
+    overflow: hidden;
 
-    .dark { color: var(--dark); }
-    .gold { color: var(--gold); }
+    .card-photo {
+      width: 100%;
+      height: 100%;
+      background: url('/assets/projects/project-1/1.jpg') center/cover;
+    }
+
+    .card-contact-strip {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(255, 255, 255, 0.95);
+      padding: 12px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+
+      strong {
+        font-family: 'Playfair Display', serif;
+        font-size: 0.95rem;
+        color: var(--dark);
+      }
+
+      span {
+        font-size: 0.8rem;
+        color: var(--text-light);
+
+        i {
+          color: var(--gold);
+          margin-right: 6px;
+        }
+      }
+    }
   }
 
-  .card-tagline {
-    font-size: 0.85rem;
-    color: var(--text-muted);
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    margin-bottom: 24px;
-  }
-
-  .card-divider {
-    width: 60px;
-    height: 2px;
+  .gold-corner {
+    position: absolute;
+    top: -40px;
+    right: 45%;
+    width: 80px;
+    height: 80px;
     background: var(--gold);
-    margin: 0 auto 24px;
-  }
-
-  .card-name {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.3rem;
-    color: var(--dark);
-    margin-bottom: 4px;
-  }
-
-  .card-role {
-    font-size: 0.85rem;
-    color: var(--text-light);
-    margin-bottom: 28px;
+    transform: rotate(45deg);
+    opacity: 0.8;
   }
 }
 
-.card-details {
+// === BACK ===
+.back {
   display: flex;
   flex-direction: column;
-  gap: 14px;
-  align-items: center;
-}
+  background: var(--dark);
+  color: #fff;
 
-.card-detail {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  text-decoration: none;
-  color: var(--text);
-  font-size: 0.9rem;
-  transition: color 0.2s;
+  .back-content {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    padding: 30px;
+    gap: 20px;
+  }
 
-  i {
-    color: var(--gold);
-    width: 18px;
+  .back-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .back-headline {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      line-height: 1.4;
+      margin-bottom: 12px;
+
+      span {
+        color: var(--gold);
+      }
+    }
+
+    .back-desc {
+      font-size: 0.75rem;
+      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.7);
+
+      em {
+        color: var(--gold);
+        font-style: normal;
+      }
+    }
+  }
+
+  .back-right {
+    display: flex;
+    align-items: center;
+
+    .back-details {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      font-size: 0.8rem;
+
+      div, a {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: rgba(255, 255, 255, 0.85);
+        text-decoration: none;
+        transition: color 0.2s;
+
+        &:hover {
+          color: var(--gold);
+        }
+      }
+
+      i {
+        color: var(--gold);
+        width: 16px;
+        text-align: center;
+        font-size: 0.75rem;
+      }
+    }
+  }
+
+  .back-services {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    padding: 10px 20px;
+    border-top: 1px solid rgba(200, 164, 94, 0.3);
+    flex-wrap: wrap;
+
+    span {
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--gold);
+      opacity: 0.8;
+    }
+  }
+
+  .back-footer {
+    background: var(--gold);
+    color: var(--dark);
     text-align: center;
-  }
-
-  &:hover {
-    color: var(--gold);
+    padding: 8px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
   }
 }
 
+// === Actions ===
 .card-actions {
   display: flex;
   gap: 12px;
-  margin-top: 24px;
+  margin-top: 30px;
 
-  button {
-    flex: 1;
-    padding: 14px 20px;
+  .btn-action {
+    padding: 12px 24px;
     border: none;
-    border-radius: 12px;
-    font-size: 0.9rem;
+    border-radius: 30px;
+    font-size: 0.85rem;
     font-weight: 600;
     cursor: pointer;
     display: flex;
     align-items: center;
-    justify-content: center;
     gap: 8px;
-    transition: all 0.3s ease;
-  }
-
-  .btn-save {
-    background: var(--gold);
-    color: #fff;
-
-    &:hover {
-      background: var(--gold-dark);
-    }
-  }
-
-  .btn-print {
     background: var(--dark);
     color: #fff;
+    transition: all 0.3s ease;
 
     &:hover {
-      background: var(--dark-light);
+      background: var(--gold);
+      color: #fff;
+    }
+
+    i {
+      font-size: 0.9rem;
     }
   }
 }
 
-// Print-only cards (standard 3.5 x 2 inch)
-.print-cards {
-  display: none;
-}
-
+// === Print ===
 @media print {
   .card-page {
-    display: block;
     padding: 0;
     background: #fff;
     min-height: 0;
   }
 
-  .digital-card {
+  .card-actions {
     display: none;
   }
 
-  .no-print {
-    display: none !important;
-  }
-
-  .print-cards {
-    display: block;
-  }
-
-  .print-card {
+  .biz-card {
+    box-shadow: none;
+    border: 1px solid #ddd;
+    border-radius: 0;
+    page-break-inside: avoid;
+    aspect-ratio: 1.75 / 1;
     width: 3.5in;
     height: 2in;
-    border: 1px solid #ddd;
     margin: 0.25in auto;
-    padding: 0.3in;
-    display: flex;
+  }
+}
+
+// === Mobile ===
+@media (max-width: 600px) {
+  .biz-card {
+    aspect-ratio: auto;
+    border-radius: 12px;
+  }
+
+  .front {
+    grid-template-columns: 1fr;
+
+    .card-right .card-photo {
+      height: 150px;
+    }
+
+    .gold-corner {
+      display: none;
+    }
+  }
+
+  .back .back-content {
+    grid-template-columns: 1fr;
+    padding: 20px;
+  }
+
+  .card-actions {
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    page-break-inside: avoid;
-  }
+    width: 100%;
+    max-width: 300px;
 
-  .print-front {
-    .print-logo {
-      height: 50px;
-      margin-bottom: 8px;
-    }
-
-    .print-company {
-      font-family: 'Playfair Display', serif;
-      font-size: 16pt;
-      font-weight: 700;
-      color: #0d0d0d;
-    }
-
-    .print-tagline {
-      font-size: 7pt;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      color: #c8a45e;
-      margin-top: 4px;
-    }
-  }
-
-  .print-back {
-    align-items: flex-start;
-    text-align: left;
-
-    .print-name {
-      font-family: 'Playfair Display', serif;
-      font-size: 12pt;
-      font-weight: 700;
-      color: #0d0d0d;
-    }
-
-    .print-role {
-      font-size: 8pt;
-      color: #666;
-      margin-bottom: 12px;
-    }
-
-    .print-info {
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-      font-size: 8pt;
-      color: #333;
-
-      i {
-        color: #c8a45e;
-        width: 14px;
-        margin-right: 6px;
-      }
+    .btn-action {
+      justify-content: center;
     }
   }
 }
